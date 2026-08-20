@@ -4,7 +4,7 @@ namespace TwitterClone.Domain.Entities
 {
     public class User
     {
-        private Guid _id;
+        public Guid _id;
         private string _firstName;
         private string _lastName;
         private string _email;
@@ -23,6 +23,11 @@ namespace TwitterClone.Domain.Entities
         {
             get { return _lastName; }
             set { _lastName = value; }
+        }
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
         }
     }
 }
