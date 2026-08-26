@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 namespace TwitterClone.Domain.Entities
 {
-    public class Retweet
+    public class Retweet:BaseEntity
     {
-        private Guid _id;
+
         private Guid _userId;
         private Guid _tweetId;
-        private DateTime _createdAt;
-
-        public Guid ID
+        private string? _comment;
+        public Retweet() : base(Guid.NewGuid())
         {
-            get { return _id; }
-        }
 
+        }
+        
         public Guid UserId
         {
             get { return _userId; }
@@ -26,11 +25,11 @@ namespace TwitterClone.Domain.Entities
             get { return _tweetId; }
             set { _tweetId = value; }
         }
-
-        public DateTime CreatedAt
+        public string Comment
         {
-            get { return _createdAt; }
-            set { _createdAt = value; }
+            get { return _comment; }
+            set { _comment = value; }
         }
+
     }
 }

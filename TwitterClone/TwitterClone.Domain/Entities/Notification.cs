@@ -1,19 +1,18 @@
 ﻿namespace TwitterClone.Domain.Entities
 {
-    public class Notification
+    public class Notification:BaseEntity
     {
-        private Guid _id;
         private Guid _userId;
         private string _type= string.Empty;
         private string _message= string.Empty;
         private bool _isRead;
-        private DateTime _createdAt;
 
-        public Guid ID
+        public Notification(string type):base(Guid.NewGuid())
         {
-            get { return _id; }
+            _type = type;
         }
 
+        
         public Guid UserId
         {
             get { return _userId; }
@@ -26,7 +25,7 @@
             set { _type = value; }
         }
 
-        public string Message
+        protected string Message
         {
             get { return _message; }
             set { _message = value; }
@@ -38,10 +37,15 @@
             set { _isRead = value; }
         }
 
-        public DateTime CreatedAt
+        protected string message
         {
-            get { return _createdAt; }
-            set { _createdAt = value; }
+            get { return _message; }
+            set { _message = value; }
+        }
+        public override string DescribeRecord()
+        {
+            var baseRecord = base.DescribeRecord();
+            return $"{baseRecord}, UserId: {UserId}, Type: {Type}, Message: {Message}, IsRead: {IsRead}";
         }
     }
 }

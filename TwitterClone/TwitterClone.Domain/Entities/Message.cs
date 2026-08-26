@@ -1,25 +1,28 @@
 ﻿namespace TwitterClone.Domain.Entities
 {
-    public class Message
+    public class Message:BaseEntity
     {
-        private Guid _id;
+
+        public Message() : base(Guid.NewGuid())
+        {
+
+        }
         private Guid _senderId;
         private Guid _receiverId;
         private string _content = string.Empty;
+        private DateTime _sentAt;
         private bool _isRead;
-        private DateTime _createdAt;
-
-        public Guid ID
-        {
-            get { return _id; }
-        }
-
+      
         public Guid SenderId
         {
             get { return _senderId; }
             set { _senderId = value; }
         }
-
+        public DateTime SentAt
+        {
+            get { return _sentAt; }
+            set { _sentAt = value; }
+        }
         public Guid ReceiverId
         {
             get { return _receiverId; }
@@ -37,11 +40,10 @@
             get { return _isRead; }
             set { _isRead = value; }
         }
-
-        public DateTime CreatedAt
+        public override string DescribeRecord()
         {
-            get { return _createdAt; }
-            set { _createdAt = value; }
+            var baseRecord = base.DescribeRecord();
+            return $"{baseRecord}, SenderId: {SenderId}, ReceiverId: {ReceiverId}, Content: {Content}, SentAt: {SentAt}, IsRead: {IsRead}";
         }
     }
 }
