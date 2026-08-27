@@ -13,15 +13,19 @@ namespace TwitterClone.Domain.Entities
             CommentByUserId = commentByUserId;
         }
         public Guid CommentByUserId { get; set; }
-        public void AddMessage(string message)
-        {
-            Message = message;
-        }
+        //public void AddMessage(string message)
+        //{
+        //    Message = message;
+        //}
 
         public override string DescribeRecord()
         {
             var baseRecord = base.DescribeRecord();
             return $"{baseRecord}, CommentByUserId: {CommentByUserId}";
+        }
+        public override string GetMessage()
+        {
+            return $"User with ID {CommentByUserId} commented on your post";
         }
     }
 }

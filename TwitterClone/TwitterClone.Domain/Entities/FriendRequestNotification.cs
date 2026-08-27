@@ -13,14 +13,18 @@ namespace TwitterClone.Domain.Entities
             ReqId = reqId;
         }
         public Guid ReqId { get; set; }
-        public void AddMessage(string message)
-        {
-            Message = message;
-        }
+        //public void AddMessage(string message)
+        //{
+        //    Message = message;
+        //}
         public override string DescribeRecord()
         {
             var baseRecord = base.DescribeRecord();
             return $"{baseRecord}, RequestedByUserId: {ReqId}";
+        }
+        public override string GetMessage()
+        {
+            return $"User with ID {ReqId} sent you a friend request";
         }
     }
 }
