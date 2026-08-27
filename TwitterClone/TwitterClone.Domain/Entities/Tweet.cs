@@ -2,7 +2,7 @@
 
 namespace TwitterClone.Domain.Entities
 {
-    public class Tweet : BaseEntity
+    public class Tweet : BaseEntity,ILikeAble
     {
         private string _content;
         private Guid _userId;
@@ -29,6 +29,10 @@ namespace TwitterClone.Domain.Entities
             var baseRecord = base.DescribeRecord();
 
             return $"{baseRecord}, UserId: {UserId}, Content: {Content}";
+        }
+        public bool CanBeLiked()
+        {
+            return true;
         }
     }
 }
