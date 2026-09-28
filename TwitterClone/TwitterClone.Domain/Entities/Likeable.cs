@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace TwitterClone.Domain.Entities
 {
-    public interface IFolloable
+    internal class Likeable
     {
-        void Follow(Guid userId);
-        void Unfollow(Guid userId);
     }
 }
